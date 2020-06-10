@@ -1,0 +1,41 @@
+<aside id="colorlib-hero" >
+    <div class="flexslider">
+        <ul class="slides">
+
+            {% for rs in slider %}
+
+
+
+
+                    <li style="background-image: url({{ asset('uploads/images/' ~ rs.image) }});">
+
+                        <div class="overlay"></div>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3 slider-text">
+                                    <div class="slider-text-inner text-center">
+                                        <div class="desc">
+                                            <span class="icon"><i class="flaticon-cutlery"></i></span>
+                                            <h1>{{rs.title }}</h1>
+                                            <p>{{ rs.description }}.</p>
+                                            <p><a href="{{ path('restaurant_show', {'id': rs.id}) }}" class="btn btn-primary btn-lg btn-learn">More Information</a></p>
+                                            <div class="desc2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+
+            {% endfor %}
+        </ul>
+        <div class="mouse">
+            <a href="#" class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </a>
+        </div>
+    </div>
+</aside>

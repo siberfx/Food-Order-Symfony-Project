@@ -1,0 +1,245 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ restaurant.title }} Profile{% endblock %}
+{% block keywords %}{{ restaurant.keywords }} Profile{% endblock %}
+{% block description %}{{ restaurant.description }} Profile{% endblock %}
+
+{% block body %}
+
+    <div class="colorlib-about" style="padding-bottom:0px;">
+        <div class="container">
+            <div class="row" >
+                <div class="col-md-6" style="padding-left:0px" >
+                    <div class="row" >
+
+                        <div class="about-desc">
+                            <div class="col-md-12 col-md-offset-0 animate-box intro-heading fadeInUp animated">
+
+
+
+                            </div>
+                            <div class="col-md-11 animate-box fadeInUp animated" >
+                                <div class="col-md-11 animate-box fadeInUp animated" >
+                                    <h3>Images Gallery</h3>
+                                    <div class="dish-wrap" style="position: absolute; margin-right:0px;">
+                                        <div class="wrap">
+                                            <div class="dish-img" style="background-image: url({{ asset('uploads/images/' ~ restaurant.image) }}); max-height:100%;min-width:100%;"></div>
+                                            <div class="desc">
+                                                <h2><a href="#">{{ restaurant.title }}</a></h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% for rs in images %}
+                                        <div class="dish-wrap">
+                                            <div class="wrap">
+                                                <div class="dish-img" style="background-image: url({{ asset('uploads/images/' ~ rs.image) }}); padding:0px; max-height:100%;min-width:100%;"></div>
+                                                <div class="desc">
+                                                    <h2><a href="#">{{ restaurant.title }}</a></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="col-md-10 animate-box fadeInUp animated" style="padding-right: 0px;">
+                        <div class="col-md-20 col-md-offset-0 animate-box intro-heading fadeInUp animated">
+                            <span>Welcome to {{ restaurant.title }}</span>
+                            <h2>{{ restaurant.title }}</h2>
+                        </div>
+                        <div class="about-img about-img-2" style="background-image: url(images/about-2.jpg);">
+                            <table class="table">
+                                <tbody>
+
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ restaurant.description }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Address</th>
+                                    <td>{{ restaurant.address }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>{{ restaurant.phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{ restaurant.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>City | Country</th>
+                                    <td>{{ restaurant.city }} | {{ restaurant.country }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-13 animate-box fadeInUp animated" >
+            <div class="row">
+                <div class="col-md-14 text-center">
+                    <ul class="nav nav-tabs text-center" role="tablist">
+                        <li role="presentation" ><a href="#meal" aria-controls="drinks" role="tab" data-toggle="tab">Meal</a></li>
+                        <li role="presentation"><a href="#comment" aria-controls="desserts" role="tab" data-toggle="tab">Comments</a></li>
+                        <li role="presentation" ><a href="#detail" aria-controls="mains" role="tab" data-toggle="tab">Details</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="meal" style="margin-left: auto; margin-right: auto;">
+
+
+                    <div class="col-md-12" style="padding-left: 400px; padding-right: 100px;">
+                        <div class="col-md-12 animate-box text-center fadeInUp animated" >
+                            <ul class="menu-dish">
+                                <li>
+
+                                    <div class="text">
+
+                                        <table class="table" style="width: 900px;">
+                                            <thead>
+                                            <tr>
+
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Image</th>
+                                                <th>Price</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for food in foods %}
+                                                <tr>
+
+                                                    <td>{{ food.title }}</td>
+                                                    <td>{{ food.description }}</td>
+                                                    <td><img src="{{ asset('uploads/images/' ~food.image) }}" height="60"></td>
+                                                    <td>{{ food.price }}</td>
+
+
+                                                    <td>
+                                                        <form  action="{{ path('user_reservation_new', {'rid': restaurant.id, 'fid': food.id}) }}" method="post">
+                                                            Piece <input type="number"   id="piece" name="piece" value="1" >
+                                                            <input type="submit" value="Order Meal" class="btn btn-success">
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <td colspan="9">no meal found</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="comment" >
+                    <div class="row">
+                        <div class="col-md-11" style="padding-left: 355px; padding-right: 150px;">
+                            <div class="col-md-12 animate-box text-center fadeInUp animated" >
+                                {% for rs in comment %}
+                                    <h4>{{ rs.subject }} [Rate: {{ rs.rate }}]</h4>
+                                    <p>{{ rs.comment }}</p>
+                                    <hr>
+                                {% endfor %}
+                                {% if app.user %}
+                                    <h3>Share Your Comment </h3>
+                                    {{ include('messages.html.twig') }}
+
+                                    <form name="comment"  method="post" action="{{ path('user_new_comment', {'id':restaurant.id}) }}">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="comment_subject" name="comment[subject]" placeholder="Subject" style="background-color: #d0e9c6;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <select id="comment_rate" name="comment[rate]" style="min-width: 100%;" >
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5+</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+
+                                                <textarea style="background-color: #d0e9c6;"  data-rule="required" class="form-control" id="comment_comment" name="comment[comment]" maxlength="255" cols="30" rows="7" placeholder="Comment"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="hidden"  name="token" value="{{ csrf_token('comment') }}" />
+                                                <input type="submit" value="Send Your Comment" class="btn btn-primary">
+                                            </div>
+                                        </div>
+                                    </form>
+                                {% else %}
+                                    <li>
+                                        <a href="/loginuser"><i></i>If you want to share your comment please login!</a>
+                                    </li>
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div role="tabpanel" class="tab-pane active" id="detail" style=" padding-left: 250px;padding-right: 200px;">
+                    <div class="row" >
+                        <div class="col-md-12" >
+                            <div class="col-md-12 animate-box text-center fadeInUp animated">
+                                {{ restaurant.detail |raw }}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+{% endblock %}

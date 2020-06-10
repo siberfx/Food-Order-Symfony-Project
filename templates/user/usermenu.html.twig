@@ -1,0 +1,50 @@
+<nav id="colorlib-main-nav" role="navigation">
+    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+<div class="js-fullheight colorlib-table" style="height: 608px;">
+    <div class="colorlib-table-cell js-fullheight" style="height: 608px;">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search" placeholder="Enter any key to search...">
+                    <button type="submit" class="btn btn-primary"><i class="icon-search3"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+                <ul>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li>
+                        <a href="/user"><img src="{{asset('uploads/images/' ~ app.user.image) }}"  style="height: 30px">{{ app.user.name }}{{ app.user.surname }}</a>
+                        {{ app.user.name }}{{ app.user.surname }}
+                    </li>
+
+                    {% endif %}
+
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/user">My Profile</a></li>
+                    <li><a href="/user/reservations">My Order</a></li>
+                    <li><a href="/user/restaurant">My Restaurants</a></li>
+                    <li ><a href="/user/comments" >My Comments</a></li>
+                    <li><a href="/logout">Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+
+<div id="colorlib-page"><header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="colorlib-navbar-brand">
+                        <a class="colorlib-logo" href="index.html"><i class="flaticon-cutlery"></i><span>Lu</span><span>to</span></a>
+                    </div>
+                    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+                </div>
+            </div>
+        </div>
+    </header>

@@ -1,0 +1,85 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}Contact | {{setting[0].title}}{% endblock %}
+{% block keywords %}{{setting[0].keywords}}{% endblock %}
+{% block description %}{{setting[0].description}}{% endblock %}
+
+{% block body %}
+
+    <div class="colorlib-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="row">
+                        <div class="about-desc">
+                            <div class="col-md-12 col-md-offset-0 animate-box intro-heading fadeInUp animated">
+                                <h3>Contact Form</h3>
+                            </div>
+                            <div class="col-md-12 animate-box fadeInUp animated">
+                                {{ include('messages.html.twig') }}
+                                <form name="messages"  method="post">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="messages_name" name="messages[name]" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="messages_email" name="messages[email]" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="messages_subject" name="messages[subject]" maxlength="75" placeholder="Subject">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            <textarea name="message" data-rule="required" class="form-control" id="messages_message" name="messages[message]" maxlength="255" cols="30" rows="7" placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="hidden"  name="token" value="{{ csrf_token('form-message') }}" />
+                                            <input type="submit" value="Send Message" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-6 animate-box fadeInUp animated">
+                            <div class="about-img">
+                                <h2>Contact Us</h2>
+                                <p>{{ setting[0].contact |raw }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 animate-box fadeInUp animated">
+                            <div class="about-img about-img-2">
+                                <h3>More Detail</h3>
+                                <ul class="contact-info">
+                                    <li><span><i class="icon-map5"></i></span>{{ setting[0].address }}</li>
+                                    <li><span><i class="icon-phone4"></i></span>{{ setting[0].phone }}</li>
+                                    <li><span><i class="icon-globe3"></i></span><a href="#">{{ setting[0].email }}</a></li>
+                                    <li><span><i class="icon-phone4"></i></span>{{ setting[0].twitter }}</li>
+                                    <li><span><i class="icon-phone4"></i></span>{{ setting[0].instagram }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

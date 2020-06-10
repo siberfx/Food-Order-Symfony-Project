@@ -1,0 +1,12 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}Comment Edit{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+    {{ include('restaurant/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('user_restaurant_index') }}" class="btn btn-info">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Restaurant{% endblock %}
+
+{% block body %}
+<!-- **********************************************************************************************************************************************************
+MAIN CONTENT
+*********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i> Edit Category Page</h3>
+        <div class="row mt">
+            <div class="col-lg-12">
+                <p>
+
+                <h1>Food</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ food.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ food.title }}</td>
+            </tr>
+            <tr>
+                <th>Restaurantid</th>
+                <td>{{ food.restaurantid }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ food.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ food.image }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ food.price }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ food.status }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ food.number }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_food_index') }}">back to list</a>
+
+    <a href="{{ path('admin_food_edit', {'id': food.id}) }}">edit</a>
+
+    {{ include('admin/food/_delete_form.html.twig') }}
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- /wrapper -->
+</section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

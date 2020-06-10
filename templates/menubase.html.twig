@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block head %} {% include ('home/head.html.twig') %} {% endblock %}
+    {% block stylesheet %}  {% endblock %}
+</head>
+<body>
+
+{% block header %} {% include ('user/usermenu.html.twig') %}{% endblock %}
+{% block sidebar %} {% endblock %}
+{% block slider %} {{ include ('home/slider.html.twig') }} {% endblock %}
+{% block body %}{% endblock %}
+
+
+{% block javascripts %} {% include ('home/javascripts.html.twig') %} {% endblock %}
+
+</body>
+</html>

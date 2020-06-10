@@ -1,0 +1,68 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+    <h1>User Restaurant Detail</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Keywords</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Address</th>
+
+            <th>City</th>
+            <th>Country</th>
+            <th>Location</th>
+            <th>Status</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.title }}</td>
+                <td>{{ restaurant.keywords }}</td>
+                <td>{{ restaurant.description }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ restaurant.image) }}" style="height: 30px"> </td>
+                <td>{{ restaurant.address }}</td>
+                <td>{{ restaurant.city }}</td>
+                <td>{{ restaurant.country }}</td>
+                <td>
+                    <a href="javascript:openWin('{{ path('user_image_new',{'id':restaurant.id} ) }}','','toolbar=no,location=no,directories=0,status=no,top=50,left=100,menuBar=no,scrollBars=yes,resizable=no,width=900,height=600');">
+                        <img src="{{ asset('assets/admin/img') }}/gallery.png" style="height: 30px">
+                    </a>
+                </td>
+                <td>{{ restaurant.status }}</td>
+                <td>
+
+                    <a href="{{ path('user_restaurant_show', {'id': restaurant.id}) }}" class="btn btn-info">Show</a>
+                </td>
+                <td>
+
+                    <a href="{{ path('user_restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-info">Edit</a>
+                </td>
+                <td>
+                    {{ include('restaurant/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_restaurant_new') }}">Create new</a>
+
+
+
+
+{% endblock %}

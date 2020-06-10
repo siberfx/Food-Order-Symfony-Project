@@ -1,0 +1,31 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Restaurant Home Page{% endblock %}
+
+{% block body %}
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowURL,windowName,windowFeatures){
+        window.open(windowURL,windowName,windowFeatures);}
+</SCRIPT>
+<!-- **********************************************************************************************************************************************************
+   MAIN CONTENT
+   *********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i> Restaurant List</h3>
+        <div class="row mt">
+            <div class="col-lg-12">
+                <p>
+    {{ include('admin/messages/_form.html.twig') }}
+
+    <a href="{{ path('admin_messages_index') }}">back to list</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- /wrapper -->
+</section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+    <h1 style="color: darkorange;">>Order Form</h1>
+
+    <div class="container" style="max-width:40%;">
+
+    <table class="table" >
+
+        <tr>
+            <th>Restaurant  :</th>
+            <td>{{ restaurant.title }}</td>
+        </tr>
+        <tr>
+            <th>Food  :</th>
+            <td>{{ food.title }}</td>
+        </tr>
+        <tr>
+            <th>Price  :</th>
+            <td>{{ food.price }}</td>
+        </tr>
+        <tr>
+            <th>Piece  :</th>
+            <td>{{  data.piece  }}</td>
+        </tr>
+        <tr>
+            <th>Total  :</th>
+            <td>{{ data.total }}tl</td>
+        </tr>
+    </table>
+    </div>
+<div class="container">
+    <div class="col-md-12 animate-box fadeInUp animated">
+
+
+
+
+        {{ include('messages.html.twig') }}
+        <form name="reservation"  method="post" role="form">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input style="background-color: #d0e9c6;" type="text" class="form-control" id="reservation_name" name="reservation[name]" value="{{ app.user.name }}" placeholder="Name" data-msg="Please enter at least 4 character">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input style="background-color: #d0e9c6;" type="text" class="form-control" id="reservation_surname" name="reservation[surname]" value="{{ app.user.surname }}" placeholder="Surname" data-msg="Please enter at least 4 character">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input style="background-color: #d0e9c6;" type="text" class="form-control" id="reservation_email" name="reservation[email]" value="{{ app.user.email }}" placeholder="Email">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input style="background-color: #d0e9c6;"  type="text" class="form-control" id="reservation_phone" name="reservation[phone]" maxlength="75" placeholder="Phone">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+
+                    <textarea style="background-color: #d0e9c6;"  name="message" data-rule="required" class="form-control" id="reservation_message" name="reservation[message]" maxlength="255" cols="30" rows="7" placeholder="Message"></textarea>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden"  name="piece" value="{{ data.piece }}">
+                    ******CREDIT CARD INFORMATION****** <br>
+                    <input type="hidden"  name="token" value="{{ csrf_token('form-reservation') }}" />
+                    <input  type="submit" value="Order" class="btn btn-primary" style="min-width: 40%;">
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Restaurant Home Page{% endblock %}
+
+{% block body %}
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures){
+            window.open(windowURL,windowName,windowFeatures);}
+    </SCRIPT>
+    <!-- **********************************************************************************************************************************************************
+       MAIN CONTENT
+       *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> Restaurant List</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <p>
+                    <div style="margin-left: auto;margin-right: auto; " >
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Userid</th>
+                                <th>RestaurantId</th>
+                                <th>Foodid</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+
+                                <th>Ordertime</th>
+
+                                <th>Total</th>
+
+                                <th>Note</th>
+
+                                <th>Status</th>
+                                <th>Created_at</th>
+                                <th>actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for reservation in reservations %}
+                                <tr>
+
+
+                                    <td>
+                                        <a href="{{ path('admin_user_show', {'id': reservation.userid}) }}">
+                                            {{ reservation.uname }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('admin_restaurant_show', {'id': reservation.restaurantid}) }}">
+                                            {{ reservation.rname }}
+                                        </a>
+                                    </td>
+
+                                    <td>{{ reservation.fname }}</td>
+                                    <td>{{ reservation.name }}</td>
+                                    <td>{{ reservation.surname }}</td>
+
+                                    <td>{{ reservation.total }}</td>
+                                    <td>{{ reservation.note }}</td>
+                                    <td>{{ reservation.piece }}</td>
+                                    <td>{{ reservation.status }}</td>
+                                    <td>{{ reservation.created_at ? reservation.created_at|date('d-m-y') : '' }}</td>
+
+                                    <td>
+                                        <a class="btn btn-block btn-default" href="{{ path('admin_reservation_show', {'id': reservation.id}) }}">Show</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-block btn-info" href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}">Edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="19">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

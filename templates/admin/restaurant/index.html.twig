@@ -1,0 +1,100 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Restaurant Home Page{% endblock %}
+
+{% block body %}
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL, windowName, windowFeatures) {
+            window.open(windowURL,windowName, windowFeatures);
+        }
+    </SCRIPT>
+<!-- **********************************************************************************************************************************************************
+   MAIN CONTENT
+   *********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i> Restaurant List</h3>
+        <div class="row mt">
+            <div class="col-lg-12">
+                <p>
+<div class="col-lg-6 col-md-6 col-sm-12">
+                    <a href="{{ path('admin_restaurant_new') }}" class="btn btn-success">Create New Restaurant</a>
+                </div>
+                <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>User</th>
+                <th>I.Gallery</th>
+                <th>Foods</th>
+                <th>Status</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.catname }}</td>
+                <td nowrap>{{ restaurant.title }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ restaurant.image) }}" height="40"> </td>
+                <td>{{ restaurant.address }}</td>
+                <td>{{ restaurant.phone }}</td>
+                <td>{{ restaurant.email }}</td>
+                <td>{{ restaurant.city }}</td>
+                <td>
+                    <a href="{{ path('admin_user_show', {'id': restaurant.userid}) }}">
+                    {{ restaurant.name }} {{ restaurant.surname }}
+                    </a>
+                </td>
+                <td>
+                        <a href="'{{ path('admin_image_new',{'id':restaurant.id} ) }}">
+                        <img src="{{ asset('assets/admin/img') }}/gallery.png" height="40" title="Image Gallery">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('admin_food_new',{'id':restaurant.id} ) }}">
+                        <img src="{{ asset('assets/admin/img') }}/indir.png" height="40" title="Foods">
+                    </a>
+                </td>
+
+
+                <td>{{ restaurant.status }}</td>
+                <td>
+
+                    <a href="{{ path('admin_restaurant_show', {'id': restaurant.id}) }}" class="btn btn-info">Show</a>
+                </td>
+                <td>
+
+                    <a href="{{ path('admin_restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-info">Edit</a>
+                </td>
+                <td>
+                {{ include('admin/restaurant/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- /wrapper -->
+</section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+                {% endblock %}

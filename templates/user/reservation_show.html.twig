@@ -1,0 +1,58 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+<h1>Reservations</h1>
+
+
+
+<table class="table">
+
+
+    <tr>
+
+        <th>Restaurant</th><td>
+            <a href="{{ path('restaurant_show', {'id': reservation[0].restaurantid}) }}">
+                {{ reservation[0].rname }}
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <th>Food</th><td>{{ reservation[0].fname }}</td>
+    </tr>
+    <tr>
+        <th>Name</th><td>{{ reservation[0].name }}</td>
+    </tr>
+    <tr>
+        <th>Surname</th><td>{{ reservation[0].surname }}</td>
+    </tr>
+    <tr>
+        <th>Email</th><td>{{ reservation[0].email }}</td>
+    </tr>
+    <tr>
+        <th>Phone</th><td>{{ reservation[0].phone }}</td>
+    </tr>
+    <tr>
+        <th>Total</th><td>{{ reservation[0].total }}</td>
+    </tr>
+    <tr>
+        <th>Note</th><td>{{ reservation[0].note }}</td>
+    </tr>
+    <tr>
+        <th>Message</th><td>{{ reservation[0].message }}</td>
+    </tr>
+    <tr>
+        <th>Status</th><td>{{ reservation[0].status }}</td>
+    </tr>
+    <tr>
+        <th>Created_at</th><td>{{ reservation[0].created_at }}</td>
+    </tr>
+    <tr>
+        <th>Updated_at</th><td>{{ reservation[0].updated_at }}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+{% endblock %}

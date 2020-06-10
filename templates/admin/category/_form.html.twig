@@ -1,0 +1,58 @@
+
+
+
+<form name="category" class="cmxform form-horizontal style-form" id="signupForm" method="post" action="">
+    <div class="form-group ">
+        <label for="firstname" class="control-label col-lg-2">ParentID</label>
+
+        <div class="col-lg-10">
+            <select class=" form-control" id="category_parentid" name="category[parentid]" >
+                <option value="0"> Main Category </option>
+                {%  for cat in categories %}
+                <option value="{{ cat.id }}" {{ cat.id==category.parentid ?'Selected': ''}}>{{ cat.title }}</option>
+                {% endfor    %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="lastname" class="control-label col-lg-2">Category</label>
+        <div class="col-lg-10">
+            <input class=" form-control" type="text" id="category_title" name="category[title]" value="{{ category.title }}" required="required">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="username" class="control-label col-lg-2">Keywords</label>
+        <div class="col-lg-10">
+            <input class="form-control " type="text" id="category_keywords" name="category[keywords]" value="{{ category.keywords}}" maxlength="255">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="password" class="control-label col-lg-2">Description</label>
+        <div class="col-lg-10">
+            <input class="form-control " type="text" id="category_description" name="category[description]" value="{{ category.description }}" maxlength="255">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="confirm_password" class="control-label col-lg-2">Image</label>
+        <div class="col-lg-10">
+            <input class="form-control " type="text" id="category_image" name="category[image]" maxlength="75">
+        </div>
+    </div>
+    <div class="form-group ">
+        <label for="email" class="control-label col-lg-2">Status</label>
+        <div class="col-lg-10">
+            <select class="form-control "  id="category_status" name="category[status]" maxlength="10" >
+                <option >{{ category.status }}</option>
+                <option >True</option>
+                <option >False</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button class="btn-theme" type="submit">Save</button>
+
+        </div>
+    </div>
+</form>

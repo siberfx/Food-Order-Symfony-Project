@@ -1,0 +1,17 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}About Us | {{setting[0].title}}{% endblock %}
+{% block keywords %}{{setting[0].keywords}}{% endblock %}
+{% block description %}{{setting[0].description}}{% endblock %}
+
+{% block body %}
+
+    <h1>User</h1>
+    //template düzenleeeeeeeeeee
+    {{ setting[0].aboutus |raw }}
+
+
+
+
+
+{% endblock %}

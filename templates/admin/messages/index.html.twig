@@ -1,0 +1,71 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Restaurant Home Page{% endblock %}
+
+{% block body %}
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowURL,windowName,windowFeatures){
+        window.open(windowURL,windowName,windowFeatures);}
+</SCRIPT>
+<!-- **********************************************************************************************************************************************************
+   MAIN CONTENT
+   *********************************************************************************************************************************************************** -->
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i> Restaurant List</h3>
+        <div class="row mt">
+            <div class="col-lg-12">
+                <p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Ip</th>
+                <th>Note</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.subject }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.status }}</td>
+                <td>{{ message.ip }}</td>
+                <td>{{ message.note }}</td>
+                <td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ message.updatedAt ? message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('admin_messages_show', {'id': message.id}) }}">show</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path('admin_messages_edit', {'id': message.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- /wrapper -->
+</section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

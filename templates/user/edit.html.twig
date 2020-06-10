@@ -1,0 +1,17 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+    <h4>.</h4>
+    <div class="container">
+<h1>User</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('user_index') }}" class="btn ">back to list</a>
+
+    </div>
+    <h4>.</h4><h4>.</h4><h4>.</h4><h4>.</h4>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'menubase.html.twig' %}
+
+{% block title %}{{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+<h1>Reservations</h1>
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Restaurant</th>
+            <th>Food</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Phone</th>
+
+            <th>Total</th>
+            <th>Note</th>
+            <th>Message</th>
+            <th>Status</th>
+            <th>Created_at</th>
+            <th>Updated_at</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+
+                <td>
+                    <a href="{{ path('restaurant_show', {'id': reservation.restaurantid}) }}">
+                    {{ reservation.rname }}
+                    </a>
+                </td>
+                <td>{{ reservation.fname }}</td>
+                <td>{{ reservation.name }}</td>
+                <td>{{ reservation.surname }}</td>
+                <td>{{ reservation.email }}</td>
+                <td>{{ reservation.phone }}</td>
+                <td>{{ reservation.total }}</td>
+                <td>{{ reservation.note }}</td>
+                <td>{{ reservation.message }}</td>
+                <td>{{ reservation.status }}</td>
+                <td>{{ reservation.created_at }}</td>
+                <td>{{ reservation.updated_at }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('user_reservation_show', {'id': reservation.id}) }}">Show</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="19">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <h4>.</h4><h4>.</h4><h4>.</h4><h4>.</h4>
+
+{% endblock %}

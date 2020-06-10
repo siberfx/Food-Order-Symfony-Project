@@ -1,0 +1,91 @@
+<?php
+
+namespace App\Entity\Admin;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\Admin\ReservationRepository")
+ */
+class Reservation
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $userid;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $restaurantid;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $foodid;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $name;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getUserid(): ?int
+    {
+        return $this->userid;
+    }
+
+    public function setUserid(?int $userid): self
+    {
+        $this->userid = $userid;
+
+        return $this;
+    }
+
+    public function getRestaurantid(): ?int
+    {
+        return $this->restaurantid;
+    }
+
+    public function setRestaurantid(?int $restaurantid): self
+    {
+        $this->restaurantid = $restaurantid;
+
+        return $this;
+    }
+
+    public function getFoodid(): ?int
+    {
+        return $this->foodid;
+    }
+
+    public function setFoodid(?int $foodid): self
+    {
+        $this->foodid = $foodid;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+}

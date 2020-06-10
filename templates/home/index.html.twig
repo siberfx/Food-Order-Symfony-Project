@@ -1,0 +1,126 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{setting[0].title}}{% endblock %}
+{% block keywords %}{{setting[0].keywords}}{% endblock %}
+{% block description %}{{setting[0].description}}{% endblock %}
+
+{% block slider %}{% include ('home/slider.html.twig') %} {% endblock %}
+{% block body %}
+
+    <div class="goto-here"></div>
+
+
+    <div class="colorlib-menu">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                    <h2>Our Delicious Restaurants</h2>
+                    <h4>Are You Hungry?</h4>
+
+                </div>
+            </div>
+            <div class="row">
+                {% for rs in restaurants %}
+                    <div class="col-md-4 animate-box">
+                        <div class="dish-wrap">
+                            <a href="{{ path('restaurant_show', {'id': rs.id}) }}">
+                                <div class="wrap">
+                                    <div class="dish-img" style="background-image: url({{ asset('uploads/images/' ~ rs.image) }}); "></div>
+                                    <div class="desc">
+                                        <h2><p>{{ rs.title }}</p></h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="colorlib-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+                    <span class="icon"><i class="flaticon-cutlery"></i></span>
+                    <h2>Our New Restaurants</h2>
+                    <h4>Are you ready to find out new delicacies</h4>
+                </div>
+            </div>
+            <div class="row">
+                {% for rs in newrestaurants %}
+                    <div class="col-md-4 animate-box">
+                        <div class="dish-wrap">
+                            <a href="{{ path('restaurant_show', {'id': rs.id}) }}">
+                                <div class="wrap">
+                                    <div class="dish-img" style="background-image: url({{ asset('uploads/images/' ~ rs.image) }});"></div>
+                                    <div class="desc">
+                                        <h2><p>{{ rs.title }}</p></h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="colorlib-testimony" style="background-image: url({{ asset('assets') }}/images/cover_bg_2.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center animate-box intro-heading">
+                    <h2>Our Customer Says</h2>
+                </div>
+            </div>
+            <div class="row animate-box">
+                <div class="owl-carousel">
+                    <div class="item">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <div class="testimony">
+                                <blockquote>
+                                    <a href="/home/restaurantshow"> <p>"A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                    </a><span>" &mdash; George Brooks</span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <div class="testimony">
+                                <blockquote>
+                                    <p>"Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                    <span>" &mdash; Daniel Foster</span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-8 col-md-offset-2 text-center">
+                            <div class="testimony">
+                                <blockquote>
+                                    <p>"When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove</p>
+                                    <span>" &mdash; Liam Jenkins</span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

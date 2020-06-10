@@ -1,0 +1,75 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Restaurant Home Page{% endblock %}
+
+{% block body %}
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures){
+            window.open(windowURL,windowName,windowFeatures);}
+    </SCRIPT>
+    <!-- **********************************************************************************************************************************************************
+       MAIN CONTENT
+       *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> Restaurant List</h3>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <p>
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ message.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ message.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Subject</th>
+                            <td>{{ message.subject }}</td>
+                        </tr>
+                        <tr>
+                            <th>Message</th>
+                            <td>{{ message.message }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ message.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ip</th>
+                            <td>{{ message.ip }}</td>
+                        </tr>
+                        <tr>
+                            <th>Note</th>
+                            <td>{{ message.note }}</td>
+                        </tr>
+                        <tr>
+                            <th>Created_at</th>
+                            <td>{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Updated_at</th>
+                            <td>{{ message.updatedAt ? message.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <a href="{{ path('admin_messages_index') }}">back to list</a>
+
+                    <a href="{{ path('admin_messages_edit', {'id': message.id}) }}">edit</a>
+
+                    {{ include('admin/messages/_delete_form.html.twig') }}
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- /wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+{% endblock %}

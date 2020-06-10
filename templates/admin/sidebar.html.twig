@@ -1,0 +1,81 @@
+MAIN SIDEBAR MENU
+*********************************************************************************************************************************************************** -->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+
+            <div class="image centered"><a href="profile.html"><img src="{{asset('uploads/images/' ~ app.user.image) }}" class="img-circle" width="80"></a>
+            </div>
+
+            <div class="info">
+                <h5 class="centered" > <a  href="#" >{{app.user.name}} {{ app.user.surname }}</a></h5>
+
+                <h5 class="centered"> <a href="{{ path('app_logout') }}" class="centered">Logout</a> </h5>
+            </div>
+
+
+
+            <li class="sub-menu dcjq-parent-li">
+                <a href="/admin/reservation" class="dcjq-parent">
+                    <i class="fa fa-desktop"></i>
+                    <span>Orders</span>
+                    <span class="dcjq-icon"></span></a>
+                <ul class="sub" style="display: block;">
+                    <li><a href="/admin/reservation/New">  New</a></li>
+                    <li><a href="/admin/reservation/Accepted">  Accepted</a></li>
+                    <li><a href="/admin/reservation/Canceled">  Canceled</a></li>
+                    <li><a href="/admin/reservation/Completed">  Completed</a></li>
+
+                </ul>
+            </li>
+
+            <li class="sub-menu">
+                <a href="/admin/category">
+                    <i class=" fa fa-bar-chart-o"></i>
+                    <span>Category</span>
+                </a>
+
+            </li>
+            <li class="sub-menu">
+                <a href="/admin/restaurant">
+                    <i class=" fa fa-bar-chart-o"></i>
+                    <span>Restaurant</span>
+                </a>
+
+            </li>
+            <li class="sub-menu">
+                <a href="/admin/user">
+                    <i class=" fa fa-bar-chart-o"></i>
+                    <span>Users</span>
+                </a>
+
+            </li>
+            <li class="sub-menu">
+                <a href="/admin/comment">
+                    <i class=" fa fa-comments-o"></i>
+                    <span>User Comments</span>
+                </a>
+
+            </li>
+            <li class="sub-menu">
+                <a href="/admin/messages">
+                    <i class=" fa fa-comments-o"></i>
+                    <span>Contact Form Messages</span>
+                </a>
+
+            </li>
+
+            <li>
+                <a href="{{ path('setting_index') }}">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
+<!-- **********************************************************************************************************************************************************
